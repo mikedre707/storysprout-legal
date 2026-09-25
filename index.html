@@ -83,7 +83,7 @@
     <a class="store-btn apple" href="https://apps.apple.com/us/app/storysprout-kids-story-maker/id6794002636">
       <span class="small">Download on the</span><span class="big">App&nbsp;Store</span>
     </a>
-    <a class="store-btn play" href="https://play.google.com/store/apps/details?id=com.mlazaro.storysprout&referrer=utm_source%3Dmeta%26utm_medium%3Dpaid%26utm_campaign%3Dmeta_launch">
+    <a class="store-btn play" href="https://play.google.com/store/apps/details?id=com.mlazaro.storysprout">
       <span class="small">Get it on</span><span class="big">Google&nbsp;Play</span>
     </a>
   </div>
@@ -97,5 +97,29 @@
   </div>
   <p>Questions? <a href="mailto:mike@profsearch.net">mike@profsearch.net</a></p>
 </footer>
+<script>
+  // Visitors who arrive from an ad carry utm_* parameters. Pass those on to the
+  // store buttons so Play Console and App Store Connect attribute the installs;
+  // everyone else keeps the plain links.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var source = q.get('utm_source');
+    if (!source) return;
+    var campaign = q.get('utm_campaign') || 'landing';
+    var medium = q.get('utm_medium') || 'referral';
+    var play = document.querySelector('.store-btn.play');
+    if (play) {
+      play.href = 'https://play.google.com/store/apps/details?id=com.mlazaro.storysprout&referrer=' +
+        encodeURIComponent('utm_source=' + source + '&utm_medium=' + medium + '&utm_campaign=' + campaign);
+    }
+    // Provider token from App Store Connect → Analytics → Campaigns. Empty until set.
+    var APPLE_PROVIDER_TOKEN = '';
+    var apple = document.querySelector('.store-btn.apple');
+    if (apple && APPLE_PROVIDER_TOKEN) {
+      apple.href = 'https://apps.apple.com/app/apple-store/id6794002636?pt=' + APPLE_PROVIDER_TOKEN +
+        '&ct=' + encodeURIComponent(campaign) + '&mt=8';
+    }
+  })();
+</script>
 </body>
 </html>
