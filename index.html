@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>StorySprout — Kids Make Their Own Storybooks</title>
-<meta name="description" content="StorySprout is a story-making app for kids 5-10. Co-write a real storybook with a friendly AI, decorate every page with stickers, and read it aloud together.">
+<meta name="description" content="StorySprout is a story-making app for kids 5-10, certified by the Educational App Store. Co-write a real storybook with a friendly AI, decorate every page with stickers, and read it aloud together.">
 <style>
   * { box-sizing: border-box; }
   body { font-family: -apple-system, "Segoe UI", sans-serif; margin: 0; color: #3A2E39;
@@ -21,6 +21,18 @@
   .card { background: #fff; border: 2px solid #F0E4D2; border-radius: 20px; padding: 20px; }
   .card h3 { margin: 0 0 6px; font-size: 18px; }
   .card p { margin: 0; font-size: 15px; color: #6b5c6b; }
+  .certified { position: relative; display: flex; align-items: center; gap: 20px; background: #fff;
+               color: inherit; text-decoration: none;
+               border: 2px solid #F0E4D2; border-radius: 20px; padding: 16px 22px;
+               margin: -64px 0 28px; box-shadow: 0 6px 18px rgba(58,46,57,.10); }
+  .certified img { width: 230px; max-width: 42%; height: auto; flex: none; }
+  .certified p { margin: 0; }
+  .certified .title { font-weight: 700; font-size: 15px; }
+  .certified .quote { font-size: 14px; color: #6b5c6b; font-style: italic; margin-top: 4px; }
+  @media (max-width: 540px) {
+    .certified { flex-direction: column; text-align: center; margin-top: -48px; }
+    .certified img { width: 240px; max-width: 85%; }
+  }
   .badge { display: inline-block; background: #4ECDC4; color: #fff; font-weight: 700;
            border-radius: 999px; padding: 6px 16px; font-size: 14px; margin: 4px 4px 0 0; }
   .store-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin: 18px 0 8px; }
@@ -49,6 +61,15 @@
 </div>
 
 <main>
+  <a class="certified" href="https://www.educationalappstore.com/app/storysprout" target="_blank" rel="noopener">
+    <img src="educational-app-store-certified.jpg" alt="Certified on Educational AppStore" width="900" height="375">
+    <div>
+      <p class="title">Rated 5.0 / 5 and certified by the Educational App Store (2026)</p>
+      <p class="quote">“Its strongest idea is not simply using AI to produce children’s stories, but
+      repeatedly bringing the child back into the process.” — read the full review →</p>
+    </div>
+  </a>
+
   <div class="cards">
     <div class="card"><h3>✏️ Co-write together</h3>
       <p>Pick a hero, a place, and a spark — then shape the story page by page with fun choice
